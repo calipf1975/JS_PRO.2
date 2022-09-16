@@ -1,0 +1,40 @@
+.header{
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-between;
+    max-width: 1250px;
+    min-height:100px;
+    height: 100px;
+    background: rgb(216, 206, 206);
+}
+.logo {
+    width: 150px;
+    height:50px;
+    background: rgb(119, 126, 119);
+    text-align: center;
+    border-radius: 30px;
+}
+.cart-button{
+    width: 150px;
+    height:50px;
+    background: rgb(103, 111, 103);
+    text-align: center;
+    border-radius: 30px;
+    
+}
+.main{
+    margin: 0 auto;
+    max-width: 1250px;
+    min-height:100px;
+}
+.goods-list{
+    display: flex;
+    justify-content: space-between;
+}
+.goods-item{
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    background: rgb(177, 177, 195);
+    
+}
