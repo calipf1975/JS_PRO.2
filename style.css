@@ -5,15 +5,20 @@
 body {
     font-family: sans-serif, roboto;
 }
-.header{
+.container{
+    max-width: 1140px;
     margin: 0 auto;
     display: flex;
-    justify-content:space-between;
-    max-width: 1250px;
-    min-height:100px;
-    background: rgb(170, 236, 137);
-    border: 1px solid #1a1919;
+    flex-direction: column; 
 }
+.header{
+    background-color: darkgreen;
+    border: 1px solid #1a1919;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
 .logo {
     width: 150px;
     height:50px;
@@ -21,26 +26,40 @@ body {
     text-align: center;
     font-size:30px;
 }
-.cart-button{
-    width: 135px;
-    background: rgb(170, 236, 137);
-    background-image: url(img/bascket.webp);
-    background-repeat: no-repeat;
-    background-position: top 20px right 35px;
-    background-size: 45%;
-    border: none;
+.search{
+    display: flex;
+    align-items: center;
     
 }
+.search-input{
+    height: 30px;
+    width:500px;
+    border-radius: 5px;
+}
+.search-button{
+    border-radius: 5px;
+}
+.button{
+    margin-right: 50px;
+}
+.cart-button{
+    width: 133px;
+    height: 40px;
+    border: 3px solid white;
+    background-color: lightgreen;
+    color: darkgreen;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+
 .main{
-    margin: 0 auto;
-    max-width: 1250px;
-    min-height:100px;
-    background: rgb(186, 245, 201);
-    border: 1px solid #1a1919;
+   
 }
 .goods-list{
     display: flex;
-    justify-content: space-between;
 }
 .goods-item{
     background: #FFFFFF;
