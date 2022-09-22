@@ -52,11 +52,22 @@ class GoodsList {
     })
     document.querySelector('.goods-list').innerHTML = listHtml;
   }
+  priceGoodsSum(){
+    let sum = 0;
+    this.goods.forEach (good => { 
+        sum += good.price;
+    });
+    return sum;
+}
+
+
 }
 
 const list = new GoodsList();
 list.fetchGoods();
 list.render();
+let allSum=list.priceGoodsSum();
+console.log(allSum);
 
 class BasketItem{
   constructor(){
@@ -81,6 +92,6 @@ class BasketList{
     document.querySelector('.').innerHTML = listHtml;
   }
 }
-const basketlist = new BasketList();
-basketlist.fetchGoods();
-basketlist.render();
+// const basketlist = new BasketList();
+// basketlist.fetchGoods();
+// basketlist.render();
