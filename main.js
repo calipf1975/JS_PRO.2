@@ -18,13 +18,14 @@
   
 //   renderGoodsList(goods);
 class GoodsItem {
-  constructor(title, price){
+  constructor(title, price, img){
     this.title = title;
     this.price = price;
+    this.img = img;
   }
   
   render() {
-    return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p><button class="btn">Buy</button></div>`;
+    return `<div class="goods-item"><img class="img" src="${this.img}"><h3>${this.title}</h3><p>${this.price}</p><button class="btn">Buy</button></div>`;
   }
   
 }
@@ -36,17 +37,17 @@ class GoodsList {
   
   fetchGoods(){
     this.goods = [
-      { title: 'Shirt', price: 150 },
-      { title: 'Socks', price: 50 },
-      { title: 'Jacket', price: 350 },
-      { title: 'Shoes', price: 250 },
+      { title: 'Shirt', price: 150, img:"img/Shirt.webp"},
+      { title: 'Socks', price: 50, img:"img/Socks.webp" },
+      { title: 'Jacket', price: 350, img:"img/Jacket.webp" },
+      { title: 'Shoes', price: 250, img:"img/Shoes.webp" },
     ];
   }
   
   render(){
     let listHtml="";
     this.goods.forEach(good => {
-      const goodItem = new GoodsItem(good.title, good.price);
+      const goodItem = new GoodsItem(good.title, good.price, good.img);
       listHtml += goodItem.render();
     })
     document.querySelector('.goods-list').innerHTML = listHtml;
