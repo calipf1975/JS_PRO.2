@@ -19,7 +19,7 @@
 //   renderGoodsList(goods);
 const API_URL ='https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-function makeGETRequest(url, callback){
+function makeGETRequest(url){
     return new Promise((resolve, reject) =>{
       var xhr;
         if (window.XMLHttpRequest) {
@@ -32,7 +32,7 @@ function makeGETRequest(url, callback){
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      callback(xhr.responseText);
+      resolve(xhr.responseText);
     }
   }
 
@@ -66,7 +66,7 @@ class GoodsList {
     //   { product_name: 'Jacket', price: 350, img:"img/Jacket.webp" },
     //   { product_name: 'Shoes', price: 250, img:"img/Shoes.webp" },
     // ];
-    makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
+    makeGETRequest(`${API_URL}/catalogData.json`).then(goods => {
       this.goods = JSON.parse(goods);
       this.render();
       let allSum=list.priceGoodsSum();
