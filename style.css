@@ -31,13 +31,16 @@ body {
     align-items: center;
     
 }
-.search-input{
+.goods-search{
     height: 30px;
     width:500px;
     border-radius: 5px;
 }
 .search-button{
     border-radius: 5px;
+    height: 30px;
+    width: 50px;
+    background-color: lightgreen
 }
 .button{
     margin-right: 50px;
@@ -101,4 +104,12 @@ border: 3px solid #fc5a5a;
 }
 .cart-button:hover{
     border: 3px solid #fc5a5a;
+}
+.textarea{
+    width: 100%;
+    min-height: 250px;
+    background-color: lightgreen;
+}
+.hide{
+    display: none;
 }

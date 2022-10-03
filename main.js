@@ -57,6 +57,7 @@ class GoodsItem {
 class GoodsList {
   constructor(){
     this.goods = [];
+    this.filteredGoods = [];
   }
   
   fetchGoods(){
@@ -68,17 +69,23 @@ class GoodsList {
     // ];
     makeGETRequest(`${API_URL}/catalogData.json`).then(goods => {
       this.goods = JSON.parse(goods);
-      this.render();
+      this.filteredGoods = JSON.parse(goods);
       let allSum=list.priceGoodsSum();
       console.log(allSum);
+      this.render();
       
     })
+  }
+  filterGoods(value) {
+    const regexp = new RegExp(value, 'i');
+    this.filteredGoods = this.goods.filter(good =>regexp.test(good.product_name));
+    this.render();
   }
 
   
   render(){
     let listHtml="";
-    this.goods.forEach(good => {
+    this.filteredGoods.forEach(good => {
       const goodItem = new GoodsItem(good.product_name, good.price);
       listHtml += goodItem.render();
     })
@@ -94,6 +101,9 @@ class GoodsList {
 
 
 }
+const searchButton = document.querySelector ('.search-button');
+const searchImput = document.querySelector ('.goods-search');
+
 
 const list = new GoodsList();
 // list.fetchGoods(()=>{
@@ -102,7 +112,28 @@ const list = new GoodsList();
 //   console.log(allSum);
 // });
 list.fetchGoods();
+searchButton.addEventListener('click',(e)=>{
+  const value = searchImput.value;
+  list.filterGoods(value);
+})
+  let text= document.getElementById('text');
+  text2=text.textContent;
+  text1 = text.textContent.replace(/\B'|'\B/g, '"');
+  text3= text.textContent.replace(/'/g, '"');
 
+
+function PasteText_1() {
+  document.getElementById('textarea').value = text2;
+};
+  function PasteText_2() {
+  document.getElementById('textarea').value = text3;
+};
+  function PasteText_3() {
+  document.getElementById('textarea').value = text1;
+};
+  function PasteText_4() {
+  document.getElementById('textarea').value = "";
+};
 
 
 

@@ -8,18 +8,49 @@
   <div class="container">
     <header class="header">
       <div class="logo">eShop</div>
-      <form class="search">
-        <input type="search"class="search-input" placeholder="Поиск">
-        <button class="search-button"><img src="img/Поиск.webp" width="22px"></button>
-      </form>
+      <div class="search">
+          <input type="text"class="goods-search"  />
+          <button class="search-button" tape="button">Поиск</button>
+
+      </div>
+        
       <div class="button">
         <button class="cart-button" type="button">Корзина</button>
       </div>
+
       
   
     </header>
     <main class="main">
       <div class="goods-list"></div>
+      <textarea class="textarea" id="textarea"></textarea>
+      <input type="radio" name="shablon" id="radio_1" onclick="PasteText_1()">
+      <label for="radio_1">Начальный текст</label>
+      <input type="radio" name="shablon" id="radio_2" onclick="PasteText_2()">
+      <label for="radio_2">Все двойные ковычки</label>
+      <input type="radio" name="shablon" id="radio_3" onclick="PasteText_3()">
+      <label for="radio_3">Выборочные двойные</label>
+      <input type="radio" name="shablon" id="radio_4" onclick="PasteText_4()">
+      <label for="radio_4">Очистить</label>
+      <p id="text" class="hide">
+        One: 'Hi Mary.' 
+        Two: 'Oh, hi.'
+        One: 'How are you doing?'
+        Two: 'I'm doing alright. How about you?'
+        One: 'Not too bad. The weather is great isn't it?'
+        Two: 'Yes. It's absolutely beautiful today.'
+        One: 'I wish it was like this more frequently.'
+        Two: 'Me too.'
+        One: 'So where are you going now?'
+        Two: 'I'm going to meet a friend of mine at the department store'
+        One: 'Going to do a little shopping?'
+        Two: 'Yeah, I have to buy some presents for my parents.'
+        One: 'What's the occasion?'
+        Two: 'It's their anniversary.'
+        One: 'That's great. Well, you better get going. You don't want to be late.'
+        Two: 'I'll see you next time.'
+        One: 'Sure.' Bye.'
+    </p>
     </main>
   </div>
   <script src="main.js"></script>
