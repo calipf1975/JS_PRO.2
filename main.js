@@ -117,9 +117,9 @@ searchButton.addEventListener('click',(e)=>{
   list.filterGoods(value);
 })
   let text= document.getElementById('text');
-  text2=text.textContent;
-  text1 = text.textContent.replace(/\B'|'\B/g, '"');
-  text3= text.textContent.replace(/'/g, '"');
+  let text2=text.textContent;
+  let text1 = text.textContent.replace(/\B'|'\B/g, '"');
+  let text3= text.textContent.replace(/'/g, '"');
 
 
 function PasteText_1() {
