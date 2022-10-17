@@ -19,41 +19,70 @@
 //   renderGoodsList(goods);
 const API_URL ='https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-function makeGETRequest(url){
-    return new Promise((resolve, reject) =>{
-      var xhr;
-        if (window.XMLHttpRequest) {
-    // Chrome, Mozilla, Opera, Safari
-    xhr = new XMLHttpRequest();
-  } else if (window.ActiveXObject) {
-    // Internet Explorer
-    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-  }
+// function makeGETRequest(url){
+//     return new Promise((resolve, reject) =>{
+//       var xhr;
+//         if (window.XMLHttpRequest) {
+//     // Chrome, Mozilla, Opera, Safari
+//     xhr = new XMLHttpRequest();
+//   } else if (window.ActiveXObject) {
+//     // Internet Explorer
+//     xhr = new ActiveXObject("Microsoft.XMLHTTP");
+//   }
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      resolve(xhr.responseText);
-    }
-  }
+//   xhr.onreadystatechange = function () {
+//     if (xhr.readyState === 4) {
+//       resolve(xhr.responseText);
+//     }
+//   }
 
-  xhr.open('GET', url, true);
-  xhr.send();
-  });
+//   xhr.open('GET', url, true);
+//   xhr.send();
+//   });
   
 
-}
+// }
+let makeGETRequest = (url)=>{
+  return new Promise((resolve, reject)=>{
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = ()=>{
+      if(xhr.readyState === 4){
+        if(xhr.status !==200){
+          reject('Error');
+        }else{
+          resolve(xhr.responseText);
+        }
+      }
+    };
+    xhr.send();
+  })
+};
+
+
+
+// class GoodsItem {
+//   constructor(product_name, price){
+//     this.product_name = product_name;
+//     this.price = price;
+//   }
+  
+//   render() {
+//     return `<div class="goods-item"><img class="img" src=""><h3>${this.product_name}</h3><p>${this.price}</p><button class="btn">Buy</button></div>`;
+//   }
+  
+// }
 class GoodsItem {
-  constructor(product_name, price){
-    this.product_name = product_name;
-    this.price = price;
+  constructor(good){
+    this.title = good.product_name;
+    this.price = good.price;
+    this.id = good.id_product;
   }
-  
   render() {
-    return `<div class="goods-item"><img class="img" src=""><h3>${this.product_name}</h3><p>${this.price}</p><button class="btn">Buy</button></div>`;
-  }
+        return `<div class="goods-item"><img class="img" src="https://fotosint.ru/image/cache/no_image-500x500.png"><h3>${this.title}</h3><p>${this.price}</p><button class="btn">Buy</button></div>`;
+      }
   
 }
-
 class GoodsList {
   constructor(){
     this.goods = [];
@@ -86,7 +115,7 @@ class GoodsList {
   render(){
     let listHtml="";
     this.filteredGoods.forEach(good => {
-      const goodItem = new GoodsItem(good.product_name, good.price);
+      const goodItem = new GoodsItem(good);
       listHtml += goodItem.render();
     })
     document.querySelector('.goods-list').innerHTML = listHtml;
